@@ -1,0 +1,8 @@
+name = "kajweb-dict-mcp"
+main = "src/worker.ts"
+compatibility_date = "2026-06-15"
+
+[vars]
+DATA_BASE_URL = "https://raw.githubusercontent.com/RavenAetherXu/kajweb-dict-mcp/main/data"
+MCP_NAME = "kajweb-dict-mcp"
+MCP_VERSION = "0.1.0"

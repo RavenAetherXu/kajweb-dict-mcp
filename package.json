@@ -1,0 +1,17 @@
+{
+  "name": "kajweb-dict-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Read-only remote MCP server for kajweb/dict IELTS vocabulary data.",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260601.0",
+    "typescript": "^5.8.3",
+    "wrangler": "^4.20.0"
+  }
+}
