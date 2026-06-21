@@ -15,7 +15,10 @@ Current dataset:
 - Source repository: `https://github.com/kajweb/dict`
 - Source commit: `3992bcb94c800a2fd38a9fd6ff95b2353e755363`
 - Books: 3 IELTS books
-- Words: 10,429 lightweight word rows
+- Raw word rows: 10,429 book-specific source rows
+- Unique canonical words: 5,275 deduplicated headwords
+- Duplicate word groups: 3,427
+- Translation conflicts preserved: 1,694 canonical words have multiple source translations
 
 Data files:
 
@@ -25,14 +28,26 @@ data/ielts_words.json
 data/metadata.json
 ```
 
+The Notion-facing tools use canonical words by default. A canonical word is one
+normalized headword with all source books, ranks, word IDs, and translations kept
+under `sources`. Raw rows remain available for audit and book-order provenance.
+The worker builds this canonical index in memory from `ielts_words.json`, so the
+GitHub dataset stays compact.
+
 ## MCP Tools
 
 The server exposes read-only tools:
 
 - `list_books`: list available IELTS vocabulary books
-- `search_words`: search words by spelling or translation
-- `get_word`: get entries for an exact word
-- `get_book_stats`: get counts and sample words by book
+- `search_words`: search deduplicated canonical words by spelling or translation
+- `get_word`: get one canonical word and its source-book provenance
+- `get_word_rows`: get raw book rows for an exact word
+- `get_book_stats`: get row count, unique word count, and sample canonical words by book
+- `get_vocabulary_stats`: get dataset counts that separate raw rows from unique words
+
+Use `mode: "rows"` with `search_words` or `get_word` only when you explicitly
+want row-level results. For vocabulary size, trust `unique_word_count`, not raw
+row count.
 
 ## Deploy
 
