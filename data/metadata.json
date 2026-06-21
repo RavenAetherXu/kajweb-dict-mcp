@@ -3,5 +3,10 @@
   "sourceCommit": "3992bcb94c800a2fd38a9fd6ff95b2353e755363",
   "dataset": "IELTS subset",
   "bookCount": 3,
-  "wordCount": 10429
+  "wordCount": 10429,
+  "rowCount": 10429,
+  "uniqueWordCount": 5275,
+  "duplicateWordCount": 3427,
+  "translationConflictCount": 1694,
+  "canonicalSchemaVersion": 1
 }
